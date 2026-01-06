@@ -3,6 +3,8 @@ version: '3.8'
 services:
   app:
     image: danil0919/devops-for-developers-project-74
-    build: .
+    build: 
+      context: .
+      dockerfile: Dockerfile.production
     user: root
     container_name: app

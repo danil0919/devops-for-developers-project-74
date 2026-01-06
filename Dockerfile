@@ -19,6 +19,6 @@ RUN npm ci
 COPY app .
 
 EXPOSE 8080
-ENV NODE_ENV=dev
+ENV NODE_ENV=development
 
 CMD ["make", "dev"]
