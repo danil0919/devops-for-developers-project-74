@@ -2,9 +2,26 @@ version: '3.8'
 
 services:
   app:
+    depends_on:
+      - db
     image: danil0919/devops-for-developers-project-74
     build: 
       context: .
       dockerfile: Dockerfile.production
     user: root
     container_name: app
+
+  db:
+    image: postgres:13-alpine
+    env_file:
+      - .env
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  db_data:
