@@ -5,6 +5,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - run: cat .env.test >> .env
       - run: make run-tests-ci 
   docker:
     needs: tests
