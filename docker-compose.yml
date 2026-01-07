@@ -3,7 +3,8 @@ version: '3.8'
 services:
   app:
     depends_on:
-      - db
+      - db:
+          condition: service_healthy
     image: danil0919/devops-for-developers-project-74
     build: 
       context: .
