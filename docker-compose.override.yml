@@ -11,25 +11,7 @@ services:
     volumes:
       - app:/app
       - node_modules:/app/node_modules
-  
-  caddy:
-    depends_on:
-      - app
-    image: caddy:latest
-    volumes:
-      - ./services/caddy:/etc/caddy
-      - caddy_data:/data
-      - caddy_config:/config
-    ports:
-      - "0.0.0.0:80:80"
-      - "0.0.0.0:443:443"
-
-  db:
-    env_file:
-      - .env
 
 volumes:
   app:
   node_modules:
-  caddy_data:
-  caddy_config:
