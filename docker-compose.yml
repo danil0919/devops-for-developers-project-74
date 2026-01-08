@@ -31,18 +31,6 @@ services:
       - NODE_ENV=test
     user: root
 
-  caddy:
-    depends_on:
-      - app
-    image: caddy:latest
-    volumes:
-      - ./services/caddy:/etc/caddy
-      - caddy_data:/data
-      - caddy_config:/config
-    ports:
-      - "0.0.0.0:80:80"
-      - "0.0.0.0:443:443"
-
   db:
     image: postgres:13-alpine
     env_file:
@@ -59,5 +47,3 @@ services:
 
 volumes:
   db_data:
-  caddy_data:
-  caddy_config:
