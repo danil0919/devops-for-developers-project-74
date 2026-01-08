@@ -1,8 +1,8 @@
 run-tests:
-	docker compose -f docker-compose.yml up --build --abort-on-container-exit --exit-code-from tests
+	export NODE_ENV=test; docker compose -f docker-compose.yml up --build --abort-on-container-exit --exit-code-from tests
 
 start-dev:
-	docker compose -f docker-compose.yml -f docker-compose.override.yml up --build
+	export NODE_ENV=development; docker compose -f docker-compose.yml -f docker-compose.override.yml up --build
 	
 start-prod:
 	docker-compose up --build
