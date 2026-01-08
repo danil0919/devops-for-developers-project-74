@@ -15,7 +15,6 @@ services:
       - NODE_ENV=${NODE_ENV}
     user: root
     container_name: app
-    command: ["make", "start"]
 
   tests:
     depends_on:
@@ -30,6 +29,7 @@ services:
     environment:
       - NODE_ENV=test
     user: root
+    command: ["make", "test"]
 
   caddy:
     depends_on:
