@@ -5,7 +5,7 @@ start-dev:
 	export NODE_ENV="development"; docker compose up --build
 	
 start-prod:
-	export NODE_ENV="production"; docker-compose up --build
+	docker-compose -f docker-compose.yml up --build
 
 setup-local:
 	docker run -it -w /root -v `pwd`/app:/root node:20.12.2 make setup
