@@ -9,6 +9,12 @@ services:
     build: 
       context: .
       dockerfile: Dockerfile.production
+    environment:
+      - NODE_ENV=test
+      - DATABASE_HOST=${DATABASE_HOST}
+      - DATABASE_NAME=${DATABASE_NAME}
+      - DATABASE_USERNAME=${DATABASE_USERNAME}
+      - DATABASE_PASSWORD=${DATABASE_PASSWORD}
     container_name: app
     command: ["make", "test"]
 
@@ -21,6 +27,10 @@ services:
       interval: 5s
       timeout: 5s
       retries: 5
+    environment:
+      POSTGRES_DB: ${DATABASE_NAME}
+      POSTGRES_USER: ${DATABASE_USERNAME}
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
     ports:
       - "5432:5432"
 
