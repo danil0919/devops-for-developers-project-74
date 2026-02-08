@@ -6,8 +6,6 @@ services:
       db:
         condition: service_healthy
     image: danil0919/devops-for-developers-project-74
-    env_file:
-      - .env
     build: 
       context: .
       dockerfile: Dockerfile.production
