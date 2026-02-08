@@ -6,35 +6,18 @@ services:
       db:
         condition: service_healthy
     image: danil0919/devops-for-developers-project-74
+    env_file:
+      - .env
     build: 
       context: .
       dockerfile: Dockerfile.production
-    env_file:
-      - .env
     environment:
       - NODE_ENV=${NODE_ENV}
-    user: root
     container_name: app
-    command: ["make", "start"]
-
-  tests:
-    depends_on:
-      db:
-        condition: service_healthy
-    image: danil0919/devops-for-developers-project-74
-    build: 
-      context: .
-      dockerfile: Dockerfile.production
-    env_file:
-      - .env
-    environment:
-      - NODE_ENV=test
-    user: root
+    command: ["make", "test"]
 
   db:
     image: postgres:13-alpine
-    env_file:
-      - .env
     volumes:
       - db_data:/var/lib/postgresql/data
     healthcheck:
