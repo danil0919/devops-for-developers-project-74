@@ -9,8 +9,6 @@ services:
     build: 
       context: .
       dockerfile: Dockerfile.production
-    environment:
-      - NODE_ENV=${NODE_ENV}
     container_name: app
     command: ["make", "test"]
 
