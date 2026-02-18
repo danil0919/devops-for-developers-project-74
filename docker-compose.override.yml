@@ -26,6 +26,5 @@ services:
 
 
 volumes:
-  node_modules:
   caddy_data:
   caddy_config:

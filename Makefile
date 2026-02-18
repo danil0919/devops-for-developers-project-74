@@ -8,4 +8,4 @@ start-prod:
 	docker compose -f docker-compose.yml up --build
 
 setup-local:
-	docker run -it -w /root -v `pwd`/app:/root node:20.12.2 make setup
+	docker compose run --rm --no-deps app make setup
